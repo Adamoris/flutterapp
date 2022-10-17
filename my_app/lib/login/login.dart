@@ -53,11 +53,18 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.blue, fontSize: 15),
                 )),
             Flexible(
-              child: LoginButton(
-                icon: FontAwesomeIcons.user,
-                text: 'Sign In',
-                loginMethod: Authentication().emailLogin,
-                color: Colors.blue,
+              child: ElevatedButton.icon(
+                icon: const Icon(
+                  FontAwesomeIcons.user,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.all(24),
+                  backgroundColor: Colors.blue,
+                ),
+                onPressed: () => Authentication().emailLogin(email, password),
+                label: const Text('Sign In', textAlign: TextAlign.center),
               ),
             ),
             const Spacer(),
@@ -66,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/signup');
                 },
                 child: const Text(
-                  'New User? Sign up.',
+                  'New User? Sign up!',
                   style: TextStyle(color: Colors.grey, fontSize: 15),
                 )),
             Flexible(

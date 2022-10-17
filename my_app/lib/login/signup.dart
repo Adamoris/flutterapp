@@ -105,6 +105,8 @@ class _SignUpState extends State<SignUp> {
                 onPressed: validPassword
                     ? () {
                         print("Attempt signup");
+                        Authentication().createAccount(email, password);
+                        Navigator.pop(context);
                       }
                     : null,
                 label: const Text('Sign Up', textAlign: TextAlign.center),
