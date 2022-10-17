@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/services/models.dart';
-import 'package:my_app/topics/topics.dart';
-// import 'package:my_app/shared/progress_bar.dart';
+import 'package:my_app/shared/progress_bar.dart';
+import 'package:my_app/topics/quizzes.dart';
+// import 'package:my_app/topics/topics.dart';
 
 class TopicEntry extends StatelessWidget {
   final Topic topic;
@@ -36,17 +37,25 @@ class TopicEntry extends StatelessWidget {
               ),
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                  ),
                   child: Text(
                     topic.title,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                       height: 1.5,
                       fontWeight: FontWeight.bold,
+                      fontSize: 40,
                     ),
                     overflow: TextOverflow.fade,
                     softWrap: false,
                   ),
                 ),
+              ),
+              Flexible(
+                child: Progress(topic: topic),
               ),
             ],
           ),
@@ -65,18 +74,26 @@ class TopicScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        title: Text(
+          topic.title,
+          // textAlign: TextAlign.center,
+          // style: const TextStyle(
+          //     height: 2, fontSize: 30, fontWeight: FontWeight.bold),
+        ),
       ),
       body: ListView(children: [
+        // Text(
+        //   topic.title,
+        //   textAlign: TextAlign.center,
+        //   style: const TextStyle(
+        //       height: 2, fontSize: 30, fontWeight: FontWeight.bold),
+        // ),
         Hero(
           tag: topic.thumbnail,
           child: Image.asset('assets/thumbnails/${topic.thumbnail}',
               width: MediaQuery.of(context).size.width),
         ),
-        Text(
-          topic.title,
-          style: const TextStyle(
-              height: 2, fontSize: 20, fontWeight: FontWeight.bold),
-        ),
+        QuizList(topic: topic)
       ]),
     );
   }
