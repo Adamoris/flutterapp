@@ -27,17 +27,12 @@ class _SignUpState extends State<SignUp> {
   bool validPassword = false;
 
   void validateForm(String password, String confirm) {
-    print(confirm);
     if (password.isNotEmpty && confirm.isNotEmpty && (password == confirm)) {
-      print('password is valid');
       validPassword = true;
-      print(validPassword);
     } else {
-      print('invalid');
       validPassword = false;
     }
     setState(() {});
-    //validPassword = true;
   }
 
   @override
@@ -117,19 +112,3 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
-
-/*
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
-
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-*/

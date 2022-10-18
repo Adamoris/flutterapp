@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:my_app/services/services.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -8,7 +8,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = Authentication().user;
-    var report = Provider.of<Report>(context);
+
+    // var report = Provider.of<Report>(context);
 
     if (user != null) {
       return Scaffold(
@@ -45,6 +46,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   onPressed: () async {
                     await Authentication().signOut();
+                    // ignore: use_build_context_synchronously
                     Navigator.of(context)
                         .pushNamedAndRemoveUntil('/', (route) => false);
                   },

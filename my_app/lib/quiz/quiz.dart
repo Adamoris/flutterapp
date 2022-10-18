@@ -70,14 +70,25 @@ class StartPage extends StatelessWidget {
         children: [
           Text(quiz.title, style: Theme.of(context).textTheme.headline4),
           const Divider(),
-          Expanded(child: Text(quiz.description)),
+          Expanded(
+              child: Text(
+            quiz.description,
+            style: const TextStyle(fontSize: 20),
+          )),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton.icon(
                 onPressed: state.nextQuestion,
-                label: const Text('Start Quiz!'),
+                label: const Text(
+                  'Start Quiz!',
+                  style: TextStyle(fontSize: 20),
+                ),
                 icon: const Icon(Icons.poll),
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.all(24),
+                  backgroundColor: Colors.blue,
+                ),
               )
             ],
           )
@@ -102,7 +113,10 @@ class QuestionPage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
-            child: Text(question.text),
+            child: Text(
+              question.text,
+              style: const TextStyle(fontSize: 30),
+            ),
           ),
         ),
         Container(
@@ -133,7 +147,7 @@ class QuestionPage extends StatelessWidget {
                             margin: const EdgeInsets.only(left: 16),
                             child: Text(
                               opt.value,
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: const TextStyle(fontSize: 18),
                             ),
                           ),
                         )
@@ -164,16 +178,19 @@ answerValidator(BuildContext context, Option opt, QuizState state) {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(correct ? 'Good Job!' : 'Wrong'),
+            Text(
+              correct ? 'Good Job!' : 'Wrong',
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
             Text(
               opt.detail,
-              style: const TextStyle(fontSize: 18, color: Colors.white54),
+              style: const TextStyle(fontSize: 18, color: Colors.white),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  primary: correct ? Colors.green : Colors.red),
+                  backgroundColor: correct ? Colors.green : Colors.red),
               child: Text(
-                correct ? 'Onward!' : 'Try Again',
+                correct ? 'Next' : 'Try Again',
                 style: const TextStyle(
                   color: Colors.white,
                   letterSpacing: 1.5,
@@ -201,17 +218,21 @@ class EndPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(25),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             'Congrats! You completed the ${quiz.title} quiz.',
             textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 36),
           ),
-          const Divider(),
+          const SizedBox(
+            height: 50,
+          ),
           ElevatedButton.icon(
             style: TextButton.styleFrom(
+              padding: const EdgeInsets.all(24),
               backgroundColor: Colors.green,
             ),
             icon: const Icon(FontAwesomeIcons.check),

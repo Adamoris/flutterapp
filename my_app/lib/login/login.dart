@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_app/services/auth.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   TextEditingController emailController = TextEditingController();
@@ -91,10 +92,11 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
+/// WIP: Use this widget for apple and google logins down the line
 class LoginButton extends StatelessWidget {
-  final Color color;
-  final IconData icon;
   final String text;
+  final IconData icon;
+  final Color color;
   final Function loginMethod;
 
   const LoginButton(
