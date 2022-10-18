@@ -39,14 +39,14 @@ class FirestoreService {
   Future<void> updateUserReport(Quiz quiz) {
     var user = Authentication().user!;
     var ref = _db.collection('reports').doc(user.uid);
-    print(user.uid);
+
     var data = {
       'total': FieldValue.increment(1),
       'topics': {
         quiz.topic: FieldValue.arrayUnion([quiz.id])
       }
     };
-    print('b');
+
     return ref.set(data, SetOptions(merge: true));
   }
 }
